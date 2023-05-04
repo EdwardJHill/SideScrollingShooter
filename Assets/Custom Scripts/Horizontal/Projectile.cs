@@ -19,8 +19,10 @@ public class Projectile : MonoBehaviour
 	{
 		if (other.tag == "Enemy")
 		{
-			Destroy(other.gameObject);
-			Destroy(gameObject);
+			if (other.GetComponent<HealthComponent>()!= null)
+			{
+				other.GetComponent<HealthComponent>().TakeDamage(20);
+			}
 		}
 	}
 }

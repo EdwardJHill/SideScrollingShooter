@@ -20,9 +20,9 @@ public class ButterflyMover : MonoBehaviour
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Player")
+		if (other.GetComponent<HealthComponent>()!= null)
 		{
-			Destroy (other.gameObject);
+			other.GetComponent<HealthComponent>().TakeDamage(20);
 		}
 	}
 }
