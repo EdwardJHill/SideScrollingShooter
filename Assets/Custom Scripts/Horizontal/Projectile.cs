@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
 			{
 				other.GetComponent<HealthComponent>().TakeDamage(20);
 			}
+			Destroy(gameObject);
 		}
 	}
 }
