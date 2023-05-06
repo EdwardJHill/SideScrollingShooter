@@ -44,6 +44,7 @@ public class HorizontalPlayerController : MonoBehaviour
 	
 		if (Input.GetButton("Fire1") && firing == false)
 		{
+			anim.SetTrigger("Onfire");
 			Instantiate (projectile, firePoint.position, transform.rotation);
 			firing = true;
 		}
