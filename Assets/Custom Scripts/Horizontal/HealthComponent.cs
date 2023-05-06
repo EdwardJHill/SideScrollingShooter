@@ -23,6 +23,7 @@ public class HealthComponent : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            ScoreSystem.Instance.AddScore(10);
             Destroy(gameObject);
         }
 

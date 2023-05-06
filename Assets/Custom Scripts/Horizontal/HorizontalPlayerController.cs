@@ -17,11 +17,13 @@ public class HorizontalPlayerController : MonoBehaviour
 	protected float fireTimer;	
 	
 	protected HorizontalPushCamera cam;
+	protected Animator anim;
 		
 	void Start()
 	{
 		cam = Camera.main.GetComponent<HorizontalPushCamera>();
 		myRigidbody = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator>();
 	}
 		
 	// Update is called once per frame
