@@ -11,10 +11,13 @@ public class EnemySpawner : MonoBehaviour
 
     private float time = 0;
     private int spawned = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    public PathCreation.PathCreator followPathPrefab;
+    private PathCreation.PathCreator path;
+    // Start is called before the first frame update
+    private void Start()
+    {
+        path = Instantiate(followPathPrefab, transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -23,25 +26,18 @@ public class EnemySpawner : MonoBehaviour
     {
         time += Time.deltaTime;
         if(time>spawnRate)
-        {
-
-            
-            
-                GameObject enemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
-                enemy.GetComponent<ButterflyMover>().hSpeed = Random.Range(0.1f, 1.5f);
-                enemy.GetComponent<ButterflyMover>().hSpeed = Random.Range(0.1f, 2.5f);
-                time = 0;
-                spawned++;
+        { 
+            GameObject enemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
+            //enemy.GetComponent<ButterflyMover>().hSpeed = Random.Range(0.1f, 1.5f);
+            //enemy.GetComponent<ButterflyMover>().hSpeed = Random.Range(0.1f, 2.5f);
+            enemy.GetComponent<PathCreation.Examples.PathFollower>().speed = Random.Range(1.5f, 3f);
+            enemy.GetComponent<PathCreation.Examples.PathFollower>().pathCreator = path;
+            time = 0;
+            spawned++;
             if(spawned > countToSpawn)
             {
                 Destroy(gameObject);
             }
-            
-
-
-
-            
-
         }
     }
 }
